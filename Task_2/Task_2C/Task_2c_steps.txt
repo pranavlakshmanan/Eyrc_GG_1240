@@ -1,0 +1,57 @@
+Team ID = 1240 
+Trained weights drive link = "https://drive.google.com/file/d/1Gv8s3c_ENo_vKAgftJXWIuxy6IGj67-S/view?usp=sharing"
+
+###############################################################################
+'''
+
+1. Imported necessary libraries:
+
+Imported the required Python libraries such as tensorflow, Keras which includes the VGG16 model, numpy.
+
+2. Load the VGG16 model:
+
+Loaded the pre-trained VGG16 model from Keras applications.
+
+3. Freeze the layers:
+
+Freezed the layers of the VGG16 model to prevent them from being updated during training.
+
+4. Create a new model:
+
+Added a new fully connected layer to the VGG16 model. This layer will be used to make predictions for your specific problem.
+
+5. Compile the model:
+
+Compiled the model with an adam optimizer and categorical_crossentropy loss function suitable for multi-class classification.
+
+6. Create data generator:
+
+Created an ImageDataGenerator object for data augmentation.
+
+7. Prepare iterators:
+
+Prepared Python generators using the flow_from_directory() function to load the image data from the directory.
+
+8. Fit the model:
+
+Trained the model on your dataset using the fit() function.
+
+9. Fine-tuning and Hyperparameter Tuning:
+
+Experimented with different learning rates, batch sizes, and other hyperparameters to optimize your model's performance.
+Saved the Trained Model, and loaded it in the main program.
+
+10. Polygon Detection:
+
+Preprocessed the image by converting it into gray scale, founded the threshold values by hit and trial and detected the white square with cv.findcontours function.
+
+11. Cropping the image:
+
+Cropped the image by making it a 50x50 pixel image.
+
+12. Feeding the image to the model:
+
+Feeded the cropped image into the model by importing the model by model.load(), and got the output classifications as the return parameter.
+
+ 
+Ran the executable and uploaded the files in the EYantra Portal.

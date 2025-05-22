@@ -1,0 +1,49 @@
+Youtube Video Link -  https://www.youtube.com/watch?v=Fiv58Bs0Czw
+Main Python File Name - task_5A.py
+Camera calibration images capture file name - caliberation_images_capture.py
+Camera calibration code - camera_caliberation.py
+ESP32 code file name - Follow_Path.ino
+
+Trained Weights link -
+
+https://drive.google.com/file/d/1JET3ZiJ7o2vKjGcunNPhwofNiuTFTuBA/view?usp=sharing
+
+Steps taken for python file -
+
+1. We took the capture of the frame by cv.VideoCapture. And processed the frame by un distorting the image with the help of pre-calculated camera matrix and distortion coefficients.The provided OpenCV code utilizes a set of images capturing various angles of a chessboard to calibrate a webcam, aiming to remove barrel distortion. Through the findChessboardCorners function, it identifies corners of the chessboard in each image and refines their positions with cornerSubPix. By accumulating both object points (representing the real-world coordinates of corners) and corresponding image points (their positions in the images), it constructs a calibration dataset. This dataset is then used to compute the camera matrix and distortion coefficients, characterising the intrinsic parameters of the camera. Later, these parameters, along with translation and rotation vectors, can be employed for tasks like aruco marker tracking on a robot, ensuring accurate spatial mapping between the physical world and the camera's perspective.
+
+2. Then we corrected the orientation of the image by using an aruco marker on the arena, by calculating its angle, and rotating the input image accordingly.
+
+3. We then extracted the events in an infinite loop till we got all the 5 events properly in a order.
+
+4. We took the input image and divided it into 5 Region of Interests (ROI), with the help of aruco markers present on the Arena. We then converted each ROI into gray scale and then removed the noise from the image using fastNlMeansDenoising. Then we dilated to remove details from the image so that we could get a proper square for the determination of the bounding boxes.
+
+5. We then applied threshold on each ROI and using cv.approxPolyDP we got the corners of the event squares. We then re formed it by removing shear and rotation in the image by using cv.getPerspectiveTransform and cv.warpPerspective, and extrapolated the extracted events to 160 by 160 pixles.
+
+6. Then we sent the extracted events into our trained model and function to put a bounding square and event name.
+
+7. We then send the events list to convert it into a dictionary, and get the priority list.
+
+8. The conversion process maps the priority order of nodes (ABCDE) to a sequence of nodes in the graph. It starts from the initial node ('P0') and iteratively connects each pair of consecutive priority nodes using Dijkstra's algorithm. For instance, if A,B,D is the order then the path will be something like P0P1AP2P4B...... Finally, it completes the circuit by finding the shortest path from the last priority node back to the starting node ('P0'). This approach ensures that the resulting path connects all priority nodes in the specified order while minimising the total distance travelled.
+
+This is then converted to a move command string like lCo1…etc ie follow line turn clockwise for 1 second.
+
+9. Then we used socket programming to connect to ESP32 via WiFi protocol and send the move command string to the ESP32, with acknowledgement confirmation.
+
+10. Then we used our task 4B code part to get the mapping of our bot on QGIS.
+
+
+
+
+Arduino code explanation -
+
+We setup all the GPIOs.
+Then it receives the move command string from the python, and interprets each character as a move instruction.
+The command string comprised of instructions such as -
+l - line follow
+a - turn anti-clockwise
+c - turn clockwise
+z - buzzer beep for 1 second
+s - stop at the stop node
+u - take a U turn.
+	It has a numeric value after each instruction, which represents the magnitude of its instruction. Where 0 meaning the default value.

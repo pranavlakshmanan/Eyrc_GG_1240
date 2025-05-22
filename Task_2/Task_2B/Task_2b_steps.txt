@@ -1,0 +1,44 @@
+Team ID = 1240 
+Trained weights drive link = "enter_the_drive_link_here"
+
+###############################################################################
+'''
+Please write the complete steps taken by your team explaining how you completed Task 2B. It is adviced to be as elaborate as possible.
+
+1. Prepare the Data:
+
+Collected and organized dataset into a training set and validation set. Verified the dataset is labeled with the 5 categories is to be classified.
+Used PyTorch's data loading utilities, such as torchvision.datasets.ImageFolder to load and preprocess the training and testing image data.
+
+2. Load the Pre-trained Model:
+
+Downloaded the pre-trained ResNet-18 model from PyTorch's model zoo.
+Removed the fully connected (classification) layer from the pre-trained model, as it's specific to the original classification task.
+
+3. Modified the Model:
+
+Replaced the removed fully connected layer with a new one that matches your classification task. For this 5-category classification task, the output layer was made to have 5 neurons.
+
+4. Defined the Loss Function and Optimizer:
+
+Used cross-entropy loss function, which is commonly used for classification problems.
+Optimizer such as Adam, to update the model's parameters during training.
+
+5. Training:
+
+Iterated through the training dataset in batches, forwarding the data through your model, calculating the loss, and updating the model's parameters using backpropagation.
+The model's performance was monitored on the validation dataset to avoid overfitting.
+
+6. Validation:
+After training, the model's performance on your validation set was evaluated to ensure it's performing as expected.
+
+7. Testing and Deployment:
+
+Tested trained model on new, unseen data.
+
+8. Fine-tuning and Hyperparameter Tuning:
+
+Experimented with different learning rates, batch sizes, and other hyperparameters to optimize your model's performance.
+
+Saved the Trained Model, and loaded it in the main program.
+

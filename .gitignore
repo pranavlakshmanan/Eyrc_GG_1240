@@ -1,0 +1,12 @@
+.git
+.vscode
+gg_arena.pdf
+Task_1/.vscode
+Task_2/Task_2C/Task2_dataset
+Task_2/Task_2C/Task2_dataset
+Task_2/Task_2B/vgg16_custom.pth
+Task_2/Task_2B/model_conv.pth
+Task_2/Task_2B/model_conv_2c.pth
+Task_2/Task_2B/mymodel.h5
+Task_2/Task_2B/vgg16model.h5
+Task_2/Task_2B/vgg16_transfer_learning_model.keras

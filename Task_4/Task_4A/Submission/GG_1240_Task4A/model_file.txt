@@ -1,0 +1,2 @@
+Team ID = 1240
+Trained weights drive link = https://drive.google.com/file/d/1QWz3555uhcnkbPsE-HZAAP5ofPQtIelM/view?usp=sharing
