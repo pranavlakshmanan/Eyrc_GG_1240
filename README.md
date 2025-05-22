@@ -1,4 +1,4 @@
-# Team GG_1240(Pranav Lakshmanan , Srikar Bhardwaj) for E-Yantra Robotics competition(2023-2024), GeoGuide Theme . 
+# Team GG_1240 (AIR-9) (Pranav Lakshmanan , Srikar Bhardwaj) for E-Yantra Robotics competition(2023-2024), GeoGuide Theme . 
 
 ## About EYRc 
 
